@@ -137,7 +137,7 @@ app = FastAPI(lifespan=lifespan)
 async def get_restaurants(datetimeinput: str):
     is_valid, dt = is_valid_datetime(datetimeinput)
     if not is_valid:    
-        return HTTPException(status.HTTP_400_BAD_REQUEST, "Must provide valid datetime string as param")  
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Must provide valid datetime string as param")  
     output = []
     # print(f"Input query is a {query_weekday} {dt.hour} H and {dt.minute} M")
     for restaurant in restaurant_hours_data:

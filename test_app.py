@@ -16,8 +16,7 @@ def test_get_no_open():
         assert response.json() == []
 
 def test_get_raises_bad_datetime_str():
-    with raises(AssertionError):
-        with TestClient(app) as client:
-            response = client.get("/restaurants/2025-05-19 24:14")
-            assert response.status_code == 400
+    with TestClient(app) as client:
+        response = client.get("/restaurants/2025-05-19 24:14")
+        assert response.status_code == 400
 
